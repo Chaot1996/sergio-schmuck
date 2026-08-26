@@ -3,14 +3,15 @@
  * danach wird die Seite ohne Verzögerung angezeigt. Das Ausblenden bei
  * Wiederholung passiert bereits per Inline-Script im <head> (kein Flackern).
  *
- * Die eigentliche Choreografie (geschlossen → teilt sich → setzt sich
- * wieder zum Ring zusammen → öffnet sich) steckt als CSS-Keyframe-
- * Animation in style.css (siehe "Vorhang-Intro"); hier wird nur
- * gestartet, respektiert und nach Ablauf aufgeräumt.
+ * Die eigentliche Choreografie (6 Ringfragmente fliegen von den Rändern
+ * ein und setzen sich zusammen → Markenname blendet ein → Vorhang öffnet
+ * sich) steckt als CSS-Keyframe-Animation in style.css (siehe
+ * "Vorhang-Intro"); hier wird nur gestartet, respektiert und nach
+ * Ablauf aufgeräumt.
  */
 (function () {
   const KEY = "sergio_curtain_shown";
-  const TOTAL_MS = 2900;
+  const TOTAL_MS = 3100;
   const curtain = document.getElementById("curtain");
   if (!curtain) return;
 

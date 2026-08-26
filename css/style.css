@@ -706,11 +706,11 @@ section { padding: 96px 0; }
 .cart-total-note { font-size: 0.76rem; color: var(--ink-soft); margin-bottom: 16px; }
 
 /* ---------- Vorhang-Intro ----------
-   Ablauf: geschlossen (Ring komplett) → teilt sich in zwei Hälften →
-   setzt sich wieder zusammen → öffnet sich vollständig und gibt die
-   Website frei. Der Ring (ringversion1.png) liegt dabei als ein über
-   beide Panels gespanntes Hintergrundbild, sodass beide Hälften bei
-   translateX(0) exakt zum ganzen Ring zusammenfinden.
+   Ablauf: grüner Vorhang liegt geschlossen — 6 unterschiedlich große
+   Ringfragmente (ringversion1.png) fliegen von verschiedenen Rändern
+   ins Bild und setzen sich in der Mitte zum ganzen Ring zusammen —
+   kurze Pause, der Markenname blendet ein — dann öffnet sich der
+   Vorhang klassisch nach links/rechts und gibt die Website frei.
 ------------------------------------------------------------------- */
 html.curtain-lock,
 html.curtain-lock body { overflow: hidden; height: 100%; }
@@ -732,7 +732,6 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   bottom: 0;
   width: 50%;
   z-index: 1;
-  background-repeat: no-repeat;
   background-image:
     linear-gradient(rgba(15,43,35,0.58), rgba(15,43,35,0.58)),
     repeating-linear-gradient(
@@ -744,37 +743,53 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
       rgba(255,255,255,0.05) 26px,
       rgba(255,255,255,0.05) 28px
     ),
-    url("../assets/img/curtain-ring.png"),
     linear-gradient(90deg, var(--green-800), var(--green-900) 60%);
-  background-size: 100% 100%, 100% 100%, 200% 100%, 100% 100%;
-  background-blend-mode: multiply, normal, normal, normal;
   box-shadow: inset -40px 0 60px -30px rgba(0,0,0,0.55);
   will-change: transform;
 }
-.curtain-panel.left { left: 0; background-position: center, center, left center, center; }
+.curtain-panel.left { left: 0; }
 .curtain-panel.right {
   right: 0;
-  background-position: center, center, right center, center;
   box-shadow: inset 40px 0 60px -30px rgba(0,0,0,0.55);
 }
-.curtain-seam {
+
+/* Bühne für die 6 Ringfragmente, mittig über dem Vorhang */
+.ring-stage {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 42%;
   left: 50%;
-  width: 2px;
+  width: min(60vmin, 440px);
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
   z-index: 2;
-  background: linear-gradient(180deg, transparent, var(--gold), transparent);
-  opacity: 0.5;
+  filter: drop-shadow(0 18px 34px rgba(0,0,0,0.5));
 }
+.ring-piece {
+  position: absolute;
+  inset: 0;
+  background-image: url("../assets/img/curtain-ring.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+/* 6 unterschiedlich große Kacheln, die zusammen den ganzen Ring ergeben */
+.ring-piece.p1 { clip-path: inset(0%   70% 55% 0%); }
+.ring-piece.p2 { clip-path: inset(0%   0%  55% 30%); }
+.ring-piece.p3 { clip-path: inset(45%  45% 30% 0%); }
+.ring-piece.p4 { clip-path: inset(45%  0%  30% 55%); }
+.ring-piece.p5 { clip-path: inset(70%  60% 0%  0%); }
+.ring-piece.p6 { clip-path: inset(70%  0%  0%  40%); }
+
 .curtain-mark {
   position: absolute;
-  top: 50%;
+  top: 76%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -40%);
   text-align: center;
   color: var(--cream);
   z-index: 3;
+  opacity: 0;
   text-shadow: 0 2px 18px rgba(0,0,0,0.5);
 }
 .curtain-mark .brand-word { font-size: 2rem; letter-spacing: 0.08em; }
@@ -788,37 +803,36 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   color: var(--gold-light);
 }
 
-/* Panels beginnen geschlossen (0%), teilen sich kurz (Ring bricht auseinander),
-   finden bei ~64% wieder zum ganzen Ring zusammen, halten kurz — und öffnen
-   sich erst danach vollständig nach außen. */
-@keyframes curtainOpenLeft {
-  0%, 12%   { transform: translateX(0%); }
-  34%, 46%  { transform: translateX(-18%); }
-  64%, 80%  { transform: translateX(0%); }
-  100%      { transform: translateX(-100%); }
-}
-@keyframes curtainOpenRight {
-  0%, 12%   { transform: translateX(0%); }
-  34%, 46%  { transform: translateX(18%); }
-  64%, 80%  { transform: translateX(0%); }
-  100%      { transform: translateX(100%); }
-}
-@keyframes curtainBackdropOut {
-  0%, 85% { opacity: 1; }
-  100%    { opacity: 0; }
-}
-@keyframes curtainMarkPulse {
-  0%, 28%   { opacity: 1; }
-  34%, 46%  { opacity: 0.1; }
-  56%, 80%  { opacity: 1; }
-  90%, 100% { opacity: 0; }
-}
+/* Jedes Fragment startet weit außerhalb des Bildschirms in eine eigene
+   Richtung, fliegt bis ~40% ein und rastet zusammengesetzt ein. */
+@keyframes flyP1 { 0% { transform: translate(-70vw, -65vh) rotate(-30deg) scale(1.3); opacity: 0; } 10% { opacity: 1; } 40%, 78% { transform: translate(0,0) rotate(0) scale(1); opacity: 1; } 100% { transform: translate(0,0) rotate(0) scale(1); opacity: 1; } }
+@keyframes flyP2 { 0% { transform: translate(20vw, -75vh) rotate(20deg) scale(1.3); opacity: 0; } 10% { opacity: 1; } 40%, 78% { transform: translate(0,0) rotate(0) scale(1); opacity: 1; } 100% { transform: translate(0,0) rotate(0) scale(1); opacity: 1; } }
+@keyframes flyP3 { 0% { transform: translate(-85vw, 15vh) rotate(-16deg) scale(1.25); opacity: 0; } 10% { opacity: 1; } 40%, 78% { transform: translate(0,0) rotate(0) scale(1); opacity: 1; } 100% { transform: translate(0,0) rotate(0) scale(1); opacity: 1; } }
+@keyframes flyP4 { 0% { transform: translate(85vw, -12vh) rotate(18deg) scale(1.25); opacity: 0; } 10% { opacity: 1; } 40%, 78% { transform: translate(0,0) rotate(0) scale(1); opacity: 1; } 100% { transform: translate(0,0) rotate(0) scale(1); opacity: 1; } }
+@keyframes flyP5 { 0% { transform: translate(-25vw, 80vh) rotate(24deg) scale(1.3); opacity: 0; } 10% { opacity: 1; } 40%, 78% { transform: translate(0,0) rotate(0) scale(1); opacity: 1; } 100% { transform: translate(0,0) rotate(0) scale(1); opacity: 1; } }
+@keyframes flyP6 { 0% { transform: translate(75vw, 70vh) rotate(-20deg) scale(1.3); opacity: 0; } 10% { opacity: 1; } 40%, 78% { transform: translate(0,0) rotate(0) scale(1); opacity: 1; } 100% { transform: translate(0,0) rotate(0) scale(1); opacity: 1; } }
 
-.curtain.is-playing .curtain-panel.left { animation: curtainOpenLeft 2.9s cubic-bezier(0.65,0,0.35,1) forwards; }
-.curtain.is-playing .curtain-panel.right { animation: curtainOpenRight 2.9s cubic-bezier(0.65,0,0.35,1) forwards; }
-.curtain.is-playing .curtain-backdrop { animation: curtainBackdropOut 2.9s linear forwards; }
-.curtain.is-playing .curtain-seam,
-.curtain.is-playing .curtain-mark { animation: curtainMarkPulse 2.9s ease forwards; }
+@keyframes ringStageOut { 0%, 80% { opacity: 1; } 94%, 100% { opacity: 0; } }
+@keyframes markIn {
+  0%, 42%   { opacity: 0; transform: translate(-50%, -40%); }
+  58%, 80%  { opacity: 1; transform: translate(-50%, -50%); }
+  94%, 100% { opacity: 0; transform: translate(-50%, -50%); }
+}
+@keyframes curtainOpenLeft { 0%, 80% { transform: translateX(0%); } 100% { transform: translateX(-100%); } }
+@keyframes curtainOpenRight { 0%, 80% { transform: translateX(0%); } 100% { transform: translateX(100%); } }
+@keyframes curtainBackdropOut { 0%, 88% { opacity: 1; } 100% { opacity: 0; } }
+
+.curtain.is-playing .ring-piece.p1 { animation: flyP1 3.1s cubic-bezier(0.22,1,0.36,1) 0.02s both; }
+.curtain.is-playing .ring-piece.p2 { animation: flyP2 3.1s cubic-bezier(0.22,1,0.36,1) 0.10s both; }
+.curtain.is-playing .ring-piece.p3 { animation: flyP3 3.1s cubic-bezier(0.22,1,0.36,1) 0.06s both; }
+.curtain.is-playing .ring-piece.p4 { animation: flyP4 3.1s cubic-bezier(0.22,1,0.36,1) 0.14s both; }
+.curtain.is-playing .ring-piece.p5 { animation: flyP5 3.1s cubic-bezier(0.22,1,0.36,1) 0.04s both; }
+.curtain.is-playing .ring-piece.p6 { animation: flyP6 3.1s cubic-bezier(0.22,1,0.36,1) 0.12s both; }
+.curtain.is-playing .ring-stage { animation: ringStageOut 3.1s ease forwards; }
+.curtain.is-playing .curtain-mark { animation: markIn 3.1s ease forwards; }
+.curtain.is-playing .curtain-panel.left { animation: curtainOpenLeft 3.1s cubic-bezier(0.65,0,0.35,1) forwards; }
+.curtain.is-playing .curtain-panel.right { animation: curtainOpenRight 3.1s cubic-bezier(0.65,0,0.35,1) forwards; }
+.curtain.is-playing .curtain-backdrop { animation: curtainBackdropOut 3.1s linear forwards; }
 
 .curtain.is-hidden { display: none; }
 
