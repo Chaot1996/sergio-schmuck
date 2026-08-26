@@ -705,6 +705,83 @@ section { padding: 96px 0; }
 }
 .cart-total-note { font-size: 0.76rem; color: var(--ink-soft); margin-bottom: 16px; }
 
+/* ---------- Vorhang-Intro ---------- */
+html.curtain-lock,
+html.curtain-lock body { overflow: hidden; height: 100%; }
+
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+.curtain-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,0.16) 0px,
+      rgba(0,0,0,0.16) 2px,
+      transparent 2px,
+      transparent 26px,
+      rgba(255,255,255,0.05) 26px,
+      rgba(255,255,255,0.05) 28px
+    ),
+    linear-gradient(90deg, var(--green-800), var(--green-900) 60%);
+  box-shadow: inset -40px 0 60px -30px rgba(0,0,0,0.55);
+  transition: transform 1.15s cubic-bezier(0.83, 0, 0.17, 1);
+  will-change: transform;
+}
+.curtain-panel.right {
+  right: 0;
+  transform: scaleX(-1);
+  box-shadow: inset 40px 0 60px -30px rgba(0,0,0,0.55);
+}
+.curtain-seam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--gold), transparent);
+  opacity: 0.7;
+  transition: opacity 0.4s ease 0.5s;
+}
+.curtain-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--cream);
+  transition: opacity 0.5s ease;
+}
+.curtain-mark .brand-word { font-size: 2rem; letter-spacing: 0.08em; }
+.curtain-mark .curtain-tagline {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.curtain.is-opening .curtain-panel.left { transform: translateX(-100%); }
+.curtain.is-opening .curtain-panel.right { transform: translateX(100%) scaleX(-1); }
+.curtain.is-opening .curtain-seam,
+.curtain.is-opening .curtain-mark { opacity: 0; }
+.curtain.is-hidden { display: none; }
+
+html.no-curtain .curtain { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .curtain-panel { transition-duration: 0.01ms; }
+}
+
 /* ---------- Page hero (inner pages) ---------- */
 .page-hero {
   background: var(--green-900);

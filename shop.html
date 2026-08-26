@@ -7,8 +7,19 @@
 <meta name="description" content="Handgefertigte Ringe, Ketten, Armbänder und Fußketten von SERGIO. Unverbindlich anfragen — Sergio meldet sich mit einem persönlichen Angebot.">
 <link rel="icon" href="assets/img/logo.jpg">
 <link rel="stylesheet" href="css/style.css">
+<script>if(sessionStorage.getItem("sergio_curtain_shown")){document.documentElement.classList.add("no-curtain");}</script>
 </head>
 <body>
+
+<div class="curtain" id="curtain">
+  <div class="curtain-panel left"></div>
+  <div class="curtain-panel right"></div>
+  <div class="curtain-seam"></div>
+  <div class="curtain-mark">
+    <span class="brand-word">SERG<em>I</em>O</span>
+    <span class="curtain-tagline">Handgefertigter Schmuck</span>
+  </div>
+</div>
 
 <header class="site-header">
   <div class="header-inner">
@@ -110,6 +121,7 @@
   </div>
 </aside>
 
+<script src="js/curtain.js"></script>
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/main.js"></script>
