@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutz — SERGIO Schmuck</title>
+<link rel="icon" href="assets/img/logo.jpg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo.jpg" alt="SERGIO Schmuck Logo">
+      <span class="brand-word">SERG<em>I</em>O</span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Start</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html#leistungen">Leistungen</a>
+      <a href="index.html#permanent">Permanent Schmuck</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-btn" id="cartToggle" aria-label="Warenkorb öffnen">Anfrage <span class="cart-count" data-cart-count>0</span></button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Start</a> / Datenschutz</div>
+    <h1>Datenschutzerklärung</h1>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container legal-content">
+    <h2>1. Verantwortlicher</h2>
+    <p>
+      Sergio Ebeling, SERGIO Schmuck<br>
+      König-Karl-Straße 102, 75323 Bad Wildbad<br>
+      Telefon: 0172 18 47 54 4 · E-Mail: info@sergio-schmuck.de <span class="badge-todo">Platzhalter — bitte prüfen</span>
+    </p>
+
+    <h2>2. Erhebung und Speicherung personenbezogener Daten beim Besuch der Website</h2>
+    <p>Beim Aufrufen dieser Website werden durch den auf Ihrem Endgerät zum Einsatz kommenden Browser automatisch Informationen an den Server unserer Website gesendet (z. B. IP-Adresse, Datum und Uhrzeit der Anfrage, Browsertyp). Diese Daten werden ausschließlich zur technischen Bereitstellung der Website verwendet.</p>
+    <p><span class="badge-todo">Zu ergänzen</span> — abhängig vom gewählten Hosting-Anbieter: Name des Hosters, Serverstandort, Speicherdauer der Logfiles.</p>
+
+    <h2>3. Kontakt- und Anfrageformular</h2>
+    <p>Wenn Sie uns per Kontakt-/Anfrageformular oder E-Mail Anfragen zukommen lassen, werden Ihre Angaben aus dem Formular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+    <p>Das Formular auf dieser Website öffnet aktuell technisch Ihr lokales E-Mail-Programm (mailto-Link) — es findet keine serverseitige Speicherung der Formulardaten durch diese Website statt. <span class="badge-todo">Anzupassen, sobald ein serverseitiges Formular/Formular-Dienstleister eingebunden wird.</span></p>
+
+    <h2>4. Warenkorb / lokale Speicherung</h2>
+    <p>Für die Anfrage-Funktion im Shop werden ausgewählte Artikel lokal in Ihrem Browser gespeichert (sog. LocalStorage). Diese Daten verlassen Ihr Gerät erst, wenn Sie aktiv eine Anfrage über das Kontaktformular absenden. Sie können diese Daten jederzeit über die Browsereinstellungen löschen.</p>
+
+    <h2>5. Ihre Rechte</h2>
+    <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen die Verarbeitung Ihrer personenbezogenen Daten. Wenden Sie sich hierzu an die oben genannte Kontaktadresse.</p>
+
+    <h2>6. Cookies &amp; Analyse-Tools</h2>
+    <p>Diese Website nutzt aktuell keine Analyse- oder Tracking-Cookies. <span class="badge-todo">Sobald Tools wie Google Analytics, Meta-Pixel o. Ä. eingebunden werden, muss diese Erklärung entsprechend erweitert und ein Cookie-Consent-Banner ergänzt werden.</span></p>
+
+    <p style="margin-top:40px; font-size:0.85rem;"><em>Hinweis: Dies ist eine Grundlage für eine rechtskonforme Datenschutzerklärung, kein Rechtsrat. Bitte vor Veröffentlichung von einer rechtskundigen Person prüfen und an die tatsächlich eingesetzten Tools (Hosting, Formular-Backend, Analytics) anpassen.</em></p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> SERGIO Schmuck · Sergio Ebeling</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Warenkorb">
+  <div class="cart-drawer-head"><h3>Deine Anfrage</h3><button class="cart-close" id="cartClose" aria-label="Schließen">&times;</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-drawer-foot">
+    <div class="cart-total-row"><span>Summe</span><span id="cartTotal">0,00 €</span></div>
+    <a href="kontakt.html" class="btn btn-primary btn-full" id="cartCheckoutBtn">Anfrage senden</a>
+  </div>
+</aside>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

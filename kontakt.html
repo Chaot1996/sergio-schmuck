@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — SERGIO Schmuck</title>
+<meta name="description" content="Termine nach Vereinbarung: Kontaktiere SERGIO Schmuck in Bad Wildbad für Eheringe, Reparaturen, Sonderanfertigungen oder Permanent Schmuck.">
+<link rel="icon" href="assets/img/logo.jpg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo.jpg" alt="SERGIO Schmuck Logo">
+      <span class="brand-word">SERG<em>I</em>O</span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Start</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html#leistungen">Leistungen</a>
+      <a href="index.html#permanent">Permanent Schmuck</a>
+      <a href="kontakt.html" class="active">Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-btn" id="cartToggle" aria-label="Warenkorb öffnen">
+        Anfrage <span class="cart-count" data-cart-count>0</span>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Start</a> / Kontakt</div>
+    <span class="eyebrow">Termine nach Vereinbarung</span>
+    <h1>Kontakt &amp; Anfrage</h1>
+  </div>
+</section>
+
+<section>
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <h2>Lass uns sprechen</h2>
+      <p>Ob Wunschstück aus dem Shop, Ehering, Reparatur oder ein Termin für Permanent Schmuck — melde dich gerne unverbindlich. Sergio meldet sich zeitnah persönlich zurück.</p>
+      <dl>
+        <dt>Adresse</dt>
+        <dd>Sergio Ebeling<br>König-Karl-Straße 102<br>75323 Bad Wildbad</dd>
+        <dt>Telefon</dt>
+        <dd><a href="tel:+491721847544">0172 18 47 54 4</a></dd>
+        <dt>E-Mail</dt>
+        <dd><a href="mailto:info@sergio-schmuck.de">info@sergio-schmuck.de</a> <span class="badge-todo">Platzhalter — bitte prüfen</span></dd>
+        <dt>Instagram</dt>
+        <dd><a href="https://instagram.com/sergio_schmuck" target="_blank" rel="noopener">@sergio_schmuck</a></dd>
+        <dt>Termine</dt>
+        <dd>Nach Vereinbarung</dd>
+      </dl>
+    </div>
+
+    <div>
+      <h2>Anfrage senden</h2>
+      <form id="inquiryForm">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-field">
+            <label for="email">E-Mail *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="phone">Telefon (optional)</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="form-field">
+          <label for="message">Nachricht *</label>
+          <textarea id="message" name="message" required placeholder="Erzähl uns von deinem Wunschstück oder gewünschten Termin …"></textarea>
+        </div>
+        <div class="form-field">
+          <label>Aktuelle Anfrage aus dem Warenkorb</label>
+          <div id="cartSummaryPreview" style="font-size:0.85rem; color:var(--ink-soft); background:var(--cream-dark); padding:14px; border-radius:3px; white-space:pre-line;"></div>
+          <input type="hidden" id="cartSummaryField" name="cartSummary">
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Anfrage per E-Mail senden</button>
+        <p class="form-note">Beim Absenden öffnet sich dein E-Mail-Programm mit einer vorausgefüllten Nachricht an SERGIO. Es handelt sich um eine unverbindliche Anfrage, keine verbindliche Bestellung.</p>
+        <div class="form-success" id="formSuccess">Danke! Dein E-Mail-Programm sollte sich mit der Anfrage geöffnet haben. Falls nicht, schreib uns direkt an <a href="mailto:info@sergio-schmuck.de">info@sergio-schmuck.de</a>.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-word">SERG<em>I</em>O</span>
+        <p>Handgefertigter Schmuck, Eheringe, Reparaturen und Permanent Schmuck aus Bad Wildbad. Das Leben ist zu kurz für langweiligen Schmuck.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="index.html#leistungen">Leistungen</a></li>
+          <li><a href="index.html#permanent">Permanent Schmuck</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li>König-Karl-Straße 102<br>75323 Bad Wildbad</li>
+          <li><a href="tel:+491721847544">Tel. 0172 18 47 54 4</a></li>
+          <li><a href="https://instagram.com/sergio_schmuck" target="_blank" rel="noopener">@sergio_schmuck</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> SERGIO Schmuck · Sergio Ebeling</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Warenkorb">
+  <div class="cart-drawer-head">
+    <h3>Deine Anfrage</h3>
+    <button class="cart-close" id="cartClose" aria-label="Schließen">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-drawer-foot">
+    <div class="cart-total-row"><span>Summe</span><span id="cartTotal">0,00 €</span></div>
+    <p class="cart-total-note">Unverbindliche Anfrage — kein Kauf. Sergio meldet sich mit einem persönlichen Angebot.</p>
+    <a href="#inquiryForm" class="btn btn-primary btn-full" id="cartCheckoutBtn" onclick="closeCart()">Zum Formular</a>
+  </div>
+</aside>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

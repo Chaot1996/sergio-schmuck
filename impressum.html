@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impressum — SERGIO Schmuck</title>
+<link rel="icon" href="assets/img/logo.jpg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo.jpg" alt="SERGIO Schmuck Logo">
+      <span class="brand-word">SERG<em>I</em>O</span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Start</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html#leistungen">Leistungen</a>
+      <a href="index.html#permanent">Permanent Schmuck</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-btn" id="cartToggle" aria-label="Warenkorb öffnen">Anfrage <span class="cart-count" data-cart-count>0</span></button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Start</a> / Impressum</div>
+    <h1>Impressum</h1>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container legal-content">
+    <h2>Angaben gemäß § 5 TMG</h2>
+    <p>
+      Sergio Ebeling<br>
+      SERGIO Schmuck<br>
+      König-Karl-Straße 102<br>
+      75323 Bad Wildbad
+    </p>
+
+    <h2>Kontakt</h2>
+    <p>
+      Telefon: 0172 18 47 54 4<br>
+      E-Mail: info@sergio-schmuck.de <span class="badge-todo">Platzhalter — bitte prüfen</span>
+    </p>
+
+    <h2>Umsatzsteuer-ID <span class="badge-todo">fehlt noch</span></h2>
+    <p>Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz — bitte ergänzen, sobald vorhanden.</p>
+
+    <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+    <p>Sergio Ebeling (Anschrift wie oben)</p>
+
+    <h2>EU-Streitschlichtung</h2>
+    <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>. Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+    <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. <span class="badge-todo">Bitte prüfen / anpassen</span></p>
+
+    <h2>Haftung für Inhalte</h2>
+    <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.</p>
+
+    <h2>Bildnachweise</h2>
+    <p>Produkt- und Werkstattfotos: SERGIO Schmuck / Sergio Ebeling.</p>
+
+    <p style="margin-top:40px; font-size:0.85rem;"><em>Hinweis: Dies ist eine Grundlage. Bitte lassen Sie dieses Impressum vor Veröffentlichung von einer rechtskundigen Person (z. B. Handwerkskammer, Anwalt) prüfen und die markierten Platzhalter ergänzen (USt-ID, finale E-Mail-Adresse, ggf. Handelsregister).</em></p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> SERGIO Schmuck · Sergio Ebeling</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Warenkorb">
+  <div class="cart-drawer-head"><h3>Deine Anfrage</h3><button class="cart-close" id="cartClose" aria-label="Schließen">&times;</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-drawer-foot">
+    <div class="cart-total-row"><span>Summe</span><span id="cartTotal">0,00 €</span></div>
+    <a href="kontakt.html" class="btn btn-primary btn-full" id="cartCheckoutBtn">Anfrage senden</a>
+  </div>
+</aside>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

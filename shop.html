@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop — SERGIO Schmuck</title>
+<meta name="description" content="Handgefertigte Ringe, Ketten, Armbänder und Fußketten von SERGIO. Unverbindlich anfragen — Sergio meldet sich mit einem persönlichen Angebot.">
+<link rel="icon" href="assets/img/logo.jpg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo.jpg" alt="SERGIO Schmuck Logo">
+      <span class="brand-word">SERG<em>I</em>O</span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Start</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="index.html#leistungen">Leistungen</a>
+      <a href="index.html#permanent">Permanent Schmuck</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-btn" id="cartToggle" aria-label="Warenkorb öffnen">
+        Anfrage <span class="cart-count" data-cart-count>0</span>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Start</a> / Shop</div>
+    <span class="eyebrow">Handgefertigte Unikate</span>
+    <h1>Shop</h1>
+    <p style="max-width:560px; color:rgba(248,244,234,0.8);">Jedes Stück entsteht von Hand — kleine Unregelmäßigkeiten sind daher gewollt und machen jedes Teil einzigartig. Preise sind Richtwerte; du erhältst nach deiner Anfrage ein persönliches Angebot.</p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="alle">Alle</button>
+      <button class="filter-btn" data-filter="ringe">Ringe</button>
+      <button class="filter-btn" data-filter="halsketten">Halsketten</button>
+      <button class="filter-btn" data-filter="armbaender">Armbänder</button>
+      <button class="filter-btn" data-filter="fussketten">Fußketten</button>
+      <button class="filter-btn" data-filter="gutscheine">Gutscheine</button>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<section class="bg-cream-dark section-tight">
+  <div class="container" style="text-align:center;">
+    <span class="eyebrow" style="justify-content:center;">Individuell</span>
+    <h2>Nichts Passendes dabei?</h2>
+    <p style="max-width:520px; margin:0 auto 26px;">Sergio fertigt auch Sonderanfertigungen und individuelle Eheringe nach deinen Vorstellungen — von der Skizze bis zum fertigen Schmuckstück.</p>
+    <a href="kontakt.html" class="btn btn-dark">Sonderanfertigung anfragen</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-word">SERG<em>I</em>O</span>
+        <p>Handgefertigter Schmuck, Eheringe, Reparaturen und Permanent Schmuck aus Bad Wildbad. Das Leben ist zu kurz für langweiligen Schmuck.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="index.html#leistungen">Leistungen</a></li>
+          <li><a href="index.html#permanent">Permanent Schmuck</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li>König-Karl-Straße 102<br>75323 Bad Wildbad</li>
+          <li><a href="tel:+491721847544">Tel. 0172 18 47 54 4</a></li>
+          <li><a href="https://instagram.com/sergio_schmuck" target="_blank" rel="noopener">@sergio_schmuck</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> SERGIO Schmuck · Sergio Ebeling</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Warenkorb">
+  <div class="cart-drawer-head">
+    <h3>Deine Anfrage</h3>
+    <button class="cart-close" id="cartClose" aria-label="Schließen">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-drawer-foot">
+    <div class="cart-total-row"><span>Summe</span><span id="cartTotal">0,00 €</span></div>
+    <p class="cart-total-note">Unverbindliche Anfrage — kein Kauf. Sergio meldet sich mit einem persönlichen Angebot.</p>
+    <a href="kontakt.html" class="btn btn-primary btn-full" id="cartCheckoutBtn">Anfrage senden</a>
+  </div>
+</aside>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
