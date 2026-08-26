@@ -6,6 +6,8 @@
   --green-900: #0f2b23;
   --green-800: #163a30;
   --green-700: #1e4a3d;
+  --curtain-green: #45ad4a;      /* nur für den Vorhang-Effekt */
+  --curtain-green-light: #5bcb60; /* nur für den Vorhang-Effekt */
   --gold: #c9a24a;
   --gold-light: #e2c377;
   --cream: #f8f4ea;
@@ -723,7 +725,7 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 .curtain-backdrop {
   position: absolute;
   inset: 0;
-  background: var(--green-900);
+  background: var(--curtain-green);
   z-index: 0;
 }
 .curtain-panel {
@@ -733,18 +735,18 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   width: 50%;
   z-index: 1;
   background-image:
-    linear-gradient(rgba(15,43,35,0.58), rgba(15,43,35,0.58)),
+    linear-gradient(rgba(15,43,35,0.16), rgba(15,43,35,0.16)),
     repeating-linear-gradient(
       90deg,
-      rgba(0,0,0,0.16) 0px,
-      rgba(0,0,0,0.16) 2px,
+      rgba(0,0,0,0.1) 0px,
+      rgba(0,0,0,0.1) 2px,
       transparent 2px,
       transparent 26px,
-      rgba(255,255,255,0.05) 26px,
-      rgba(255,255,255,0.05) 28px
+      rgba(255,255,255,0.08) 26px,
+      rgba(255,255,255,0.08) 28px
     ),
-    linear-gradient(90deg, var(--green-800), var(--green-900) 60%);
-  box-shadow: inset -40px 0 60px -30px rgba(0,0,0,0.55);
+    linear-gradient(90deg, var(--curtain-green-light), var(--curtain-green) 60%);
+  box-shadow: inset -40px 0 60px -30px rgba(0,0,0,0.4);
   will-change: transform;
 }
 .curtain-panel.left { left: 0; }
@@ -787,12 +789,13 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   left: 50%;
   transform: translate(-50%, -40%);
   text-align: center;
-  color: var(--cream);
+  /* dunkel statt cremeweiß: auf dem hellen Vorhangsgrün wäre heller Text kaum lesbar */
+  color: var(--green-900);
   z-index: 3;
   opacity: 0;
-  text-shadow: 0 2px 18px rgba(0,0,0,0.5);
 }
-.curtain-mark .brand-word { font-size: 2rem; letter-spacing: 0.08em; }
+.curtain-mark .brand-word { font-size: 2rem; letter-spacing: 0.08em; color: var(--green-900); }
+.curtain-mark .brand-word em { color: #4d3608; font-style: normal; }
 .curtain-mark .curtain-tagline {
   display: block;
   margin-top: 8px;
@@ -800,7 +803,7 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   font-size: 0.72rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--gold-light);
+  color: #4d3608;
 }
 
 /* Jedes Fragment startet weit außerhalb des Bildschirms in eine eigene
