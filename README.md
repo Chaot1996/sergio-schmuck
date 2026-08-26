@@ -21,13 +21,14 @@ Bewusst **kein** Zahlungsanbieter integriert: Kund:innen stellen im Shop eine un
 
 ## Lokal ansehen
 
-Kein Build nötig — einfach im Ordner einen lokalen Server starten:
+Kein Build nötig — reines HTML/CSS/JS. Wie bei den anderen Projekten per npm auf Port 3000:
 
 ```bash
-python3 -m http.server 8080
+npm install
+npm run dev
 ```
 
-und `http://localhost:8080` öffnen.
+und `http://localhost:3000` öffnen (Ctrl+C zum Beenden).
 
 ## Offene Punkte vor Veröffentlichung
 
