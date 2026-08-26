@@ -705,7 +705,13 @@ section { padding: 96px 0; }
 }
 .cart-total-note { font-size: 0.76rem; color: var(--ink-soft); margin-bottom: 16px; }
 
-/* ---------- Vorhang-Intro ---------- */
+/* ---------- Vorhang-Intro ----------
+   Ablauf: geschlossen (Ring komplett) → teilt sich in zwei Hälften →
+   setzt sich wieder zusammen → öffnet sich vollständig und gibt die
+   Website frei. Der Ring (ringversion1.png) liegt dabei als ein über
+   beide Panels gespanntes Hintergrundbild, sodass beide Hälften bei
+   translateX(0) exakt zum ganzen Ring zusammenfinden.
+------------------------------------------------------------------- */
 html.curtain-lock,
 html.curtain-lock body { overflow: hidden; height: 100%; }
 
@@ -713,14 +719,22 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   position: fixed;
   inset: 0;
   z-index: 9999;
-  pointer-events: none;
+}
+.curtain-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--green-900);
+  z-index: 0;
 }
 .curtain-panel {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 50%;
-  background:
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(rgba(15,43,35,0.58), rgba(15,43,35,0.58)),
     repeating-linear-gradient(
       90deg,
       rgba(0,0,0,0.16) 0px,
@@ -730,14 +744,17 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
       rgba(255,255,255,0.05) 26px,
       rgba(255,255,255,0.05) 28px
     ),
+    url("../assets/img/curtain-ring.png"),
     linear-gradient(90deg, var(--green-800), var(--green-900) 60%);
+  background-size: 100% 100%, 100% 100%, 200% 100%, 100% 100%;
+  background-blend-mode: multiply, normal, normal, normal;
   box-shadow: inset -40px 0 60px -30px rgba(0,0,0,0.55);
-  transition: transform 1.15s cubic-bezier(0.83, 0, 0.17, 1);
   will-change: transform;
 }
+.curtain-panel.left { left: 0; background-position: center, center, left center, center; }
 .curtain-panel.right {
   right: 0;
-  transform: scaleX(-1);
+  background-position: center, center, right center, center;
   box-shadow: inset 40px 0 60px -30px rgba(0,0,0,0.55);
 }
 .curtain-seam {
@@ -746,9 +763,9 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   bottom: 0;
   left: 50%;
   width: 2px;
+  z-index: 2;
   background: linear-gradient(180deg, transparent, var(--gold), transparent);
-  opacity: 0.7;
-  transition: opacity 0.4s ease 0.5s;
+  opacity: 0.5;
 }
 .curtain-mark {
   position: absolute;
@@ -757,7 +774,8 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   transform: translate(-50%, -50%);
   text-align: center;
   color: var(--cream);
-  transition: opacity 0.5s ease;
+  z-index: 3;
+  text-shadow: 0 2px 18px rgba(0,0,0,0.5);
 }
 .curtain-mark .brand-word { font-size: 2rem; letter-spacing: 0.08em; }
 .curtain-mark .curtain-tagline {
@@ -770,16 +788,44 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   color: var(--gold-light);
 }
 
-.curtain.is-opening .curtain-panel.left { transform: translateX(-100%); }
-.curtain.is-opening .curtain-panel.right { transform: translateX(100%) scaleX(-1); }
-.curtain.is-opening .curtain-seam,
-.curtain.is-opening .curtain-mark { opacity: 0; }
+/* Panels beginnen geschlossen (0%), teilen sich kurz (Ring bricht auseinander),
+   finden bei ~64% wieder zum ganzen Ring zusammen, halten kurz — und öffnen
+   sich erst danach vollständig nach außen. */
+@keyframes curtainOpenLeft {
+  0%, 12%   { transform: translateX(0%); }
+  34%, 46%  { transform: translateX(-18%); }
+  64%, 80%  { transform: translateX(0%); }
+  100%      { transform: translateX(-100%); }
+}
+@keyframes curtainOpenRight {
+  0%, 12%   { transform: translateX(0%); }
+  34%, 46%  { transform: translateX(18%); }
+  64%, 80%  { transform: translateX(0%); }
+  100%      { transform: translateX(100%); }
+}
+@keyframes curtainBackdropOut {
+  0%, 85% { opacity: 1; }
+  100%    { opacity: 0; }
+}
+@keyframes curtainMarkPulse {
+  0%, 28%   { opacity: 1; }
+  34%, 46%  { opacity: 0.1; }
+  56%, 80%  { opacity: 1; }
+  90%, 100% { opacity: 0; }
+}
+
+.curtain.is-playing .curtain-panel.left { animation: curtainOpenLeft 2.9s cubic-bezier(0.65,0,0.35,1) forwards; }
+.curtain.is-playing .curtain-panel.right { animation: curtainOpenRight 2.9s cubic-bezier(0.65,0,0.35,1) forwards; }
+.curtain.is-playing .curtain-backdrop { animation: curtainBackdropOut 2.9s linear forwards; }
+.curtain.is-playing .curtain-seam,
+.curtain.is-playing .curtain-mark { animation: curtainMarkPulse 2.9s ease forwards; }
+
 .curtain.is-hidden { display: none; }
 
 html.no-curtain .curtain { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .curtain-panel { transition-duration: 0.01ms; }
+  .curtain, .curtain * { animation: none !important; }
 }
 
 /* ---------- Page hero (inner pages) ---------- */
