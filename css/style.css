@@ -856,8 +856,6 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 
 .curtain.is-hidden { display: none; }
 
-html.no-curtain .curtain { display: none; }
-
 @media (prefers-reduced-motion: reduce) {
   .curtain, .curtain * { animation: none !important; }
 }
