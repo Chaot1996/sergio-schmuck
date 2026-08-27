@@ -4,13 +4,13 @@
  * Die eigentliche Choreografie (zwei ineinander sitzende Ringe fliegen
  * aus Fragmenten zusammen → rotieren gegenläufig um die vertikale
  * Achse → verschwinden gemeinsam in den Hintergrund → SERGIO-Logo
- * blendet mittig ein und bleibt ~5s stehen → Vorhang öffnet sich)
+ * blendet mittig ein und bleibt ~3s stehen → Vorhang öffnet sich)
  * steckt als CSS-Keyframe-Animation in style.css (siehe
  * "Vorhang-Intro"); hier wird nur gestartet, respektiert und nach
  * Ablauf aufgeräumt.
  */
 (function () {
-  const TOTAL_MS = 10000;
+  const TOTAL_MS = 8000;
   const curtain = document.getElementById("curtain");
   if (!curtain) return;
 
