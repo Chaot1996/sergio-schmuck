@@ -764,13 +764,16 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   aspect-ratio: 1 / 1;
   transform: translate(-50%, -50%);
   z-index: 2;
+  perspective: 1000px;
   filter: drop-shadow(0 18px 34px rgba(0,0,0,0.5));
 }
 /* Eigener Dreh-Wrapper: rotiert den fertig zusammengesetzten Ring als
-   Ganzes, unabhängig von den Flug-Animationen der einzelnen Teile. */
+   Ganzes um die vertikale Achse (Drehteller-Effekt), unabhängig von
+   den Flug-Animationen der einzelnen Teile. */
 .ring-spin {
   position: absolute;
   inset: 0;
+  transform-style: preserve-3d;
 }
 .ring-piece {
   position: absolute;
@@ -824,9 +827,9 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 /* Der fertig zusammengesetzte Ring dreht sich einmal um sich selbst,
    bevor er wieder verblasst und der Vorhang öffnet. */
 @keyframes ringSpin {
-  0%, 40% { transform: rotate(0deg); }
-  78%     { transform: rotate(360deg); }
-  100%    { transform: rotate(360deg); }
+  0%, 40% { transform: rotateY(0deg); }
+  78%     { transform: rotateY(360deg); }
+  100%    { transform: rotateY(360deg); }
 }
 @keyframes ringStageOut { 0%, 80% { opacity: 1; } 94%, 100% { opacity: 0; } }
 @keyframes markIn {
