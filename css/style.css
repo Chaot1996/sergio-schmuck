@@ -725,7 +725,7 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 .curtain-backdrop {
   position: absolute;
   inset: 0;
-  background: var(--curtain-green);
+  background: linear-gradient(180deg, var(--curtain-green-light) 0%, var(--curtain-green) 42%, var(--green-900) 100%);
   z-index: 0;
 }
 .curtain-panel {
@@ -734,26 +734,11 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   bottom: 0;
   width: 50%;
   z-index: 1;
-  background-image:
-    linear-gradient(rgba(15,43,35,0.16), rgba(15,43,35,0.16)),
-    repeating-linear-gradient(
-      90deg,
-      rgba(0,0,0,0.1) 0px,
-      rgba(0,0,0,0.1) 2px,
-      transparent 2px,
-      transparent 26px,
-      rgba(255,255,255,0.08) 26px,
-      rgba(255,255,255,0.08) 28px
-    ),
-    linear-gradient(90deg, var(--curtain-green-light), var(--curtain-green) 60%);
-  box-shadow: inset -40px 0 60px -30px rgba(0,0,0,0.4);
+  background-image: linear-gradient(180deg, var(--curtain-green-light) 0%, var(--curtain-green) 42%, var(--green-900) 100%);
   will-change: transform;
 }
 .curtain-panel.left { left: 0; }
-.curtain-panel.right {
-  right: 0;
-  box-shadow: inset 40px 0 60px -30px rgba(0,0,0,0.55);
-}
+.curtain-panel.right { right: 0; }
 
 /* Bühne für die 6 Ringfragmente, mittig über dem Vorhang */
 .ring-stage {
