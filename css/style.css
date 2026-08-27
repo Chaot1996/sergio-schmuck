@@ -754,8 +754,8 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   perspective: 1000px;
   filter: drop-shadow(0 18px 34px rgba(0,0,0,0.5));
 }
-.ring-stage.outer { width: min(70vmin, 520px); }
-.ring-stage.inner { width: min(31vmin, 230px); z-index: 3; }
+.ring-stage.outer { width: min(92vmin, 680px); }
+.ring-stage.inner { width: min(82vmin, 606px); z-index: 3; }
 
 /* Eigener Dreh-Wrapper je Ring: rotiert das fertig zusammengesetzte
    Ring als Ganzes um die vertikale Achse (Drehteller-Effekt),
