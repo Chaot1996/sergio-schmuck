@@ -1,13 +1,13 @@
 /**
  * Vorhang-Intro: spielt bei jedem Seitenaufruf/Reload erneut ab.
  *
- * Die eigentliche Choreografie (zwei ineinander sitzende Ringe fliegen
- * aus Fragmenten zusammen → rotieren gegenläufig um die vertikale
- * Achse → verschwinden gemeinsam in den Hintergrund → SERGIO-Logo
- * blendet mittig ein und bleibt ~3s stehen → Vorhang öffnet sich)
- * steckt als CSS-Keyframe-Animation in style.css (siehe
- * "Vorhang-Intro"); hier wird nur gestartet, respektiert und nach
- * Ablauf aufgeräumt.
+ * Die eigentliche Choreografie (zwei Ringe wachsen sanft, leicht
+ * zeitversetzt, aus der Mitte → ein Lichtschimmer läuft einmal
+ * diagonal übers Metall → beide verschwinden gemeinsam in den
+ * Hintergrund → SERGIO-Logo blendet mittig ein und bleibt ~3s stehen
+ * → Vorhang öffnet sich) steckt als CSS-Keyframe-Animation in
+ * style.css (siehe "Vorhang-Intro"); hier wird nur gestartet,
+ * respektiert und nach Ablauf aufgeräumt.
  */
 (function () {
   const TOTAL_MS = 8000;
