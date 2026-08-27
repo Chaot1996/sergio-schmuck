@@ -754,8 +754,7 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 }
 /* Eigener Dreh-Wrapper: rotiert den fertig zusammengesetzten Ring als
    Ganzes um die vertikale Achse (Drehteller-Effekt), unabhängig von
-   den Flug-Animationen der einzelnen Teile und unabhängig vom Baum,
-   der fest in der Mitte stehen bleibt. */
+   den Flug-Animationen der einzelnen Teile. */
 .ring-spin {
   position: absolute;
   inset: 0;
@@ -777,17 +776,6 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 .ring-piece.p4 { clip-path: inset(45%  0%  30% 55%); }
 .ring-piece.p5 { clip-path: inset(70%  60% 0%  0%); }
 .ring-piece.p6 { clip-path: inset(70%  0%  0%  40%); }
-
-/* Baum: bleibt fest in der Mitte stehen, während der Ring um ihn rotiert */
-.tree-mark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 32%;
-  z-index: 1;
-  opacity: 0;
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
-}
 
 .curtain-mark {
   position: absolute;
@@ -837,14 +825,6 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   88%     { transform: rotateY(1160deg) scale(0.2); opacity: 0; }
   100%    { transform: rotateY(1160deg) scale(0.2); opacity: 0; }
 }
-/* Der Baum steht fest, blendet mit dem fertigen Ring ein und verschwindet
-   im selben Moment wie der Ring — gemeinsam "in den Hintergrund". */
-@keyframes treeMark {
-  0%, 24%  { opacity: 0; transform: translate(-50%, -50%) scale(0.55); }
-  30%, 76% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  88%      { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
-  100%     { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
-}
 @keyframes markIn {
   0%, 84%   { opacity: 0; transform: translate(-50%, -40%); }
   90%, 95%  { opacity: 1; transform: translate(-50%, -50%); }
@@ -861,7 +841,6 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 .curtain.is-playing .ring-piece.p5 { animation: flyP5 4.6s cubic-bezier(0.22,1,0.36,1) 0.04s both; }
 .curtain.is-playing .ring-piece.p6 { animation: flyP6 4.6s cubic-bezier(0.22,1,0.36,1) 0.12s both; }
 .curtain.is-playing .ring-spin { animation: ringSpin 4.6s linear forwards; }
-.curtain.is-playing .tree-mark { animation: treeMark 4.6s ease forwards; }
 .curtain.is-playing .curtain-mark { animation: markIn 4.6s ease forwards; }
 .curtain.is-playing .curtain-panel.left { animation: curtainOpenLeft 4.6s cubic-bezier(0.65,0,0.35,1) forwards; }
 .curtain.is-playing .curtain-panel.right { animation: curtainOpenRight 4.6s cubic-bezier(0.65,0,0.35,1) forwards; }
