@@ -790,8 +790,7 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   z-index: 4;
   opacity: 0;
 }
-.curtain-mark .brand-word { font-size: 2.6rem; letter-spacing: 0.08em; color: var(--green-900); }
-.curtain-mark .brand-word em { color: #4d3608; font-style: normal; }
+.curtain-wordmark { width: min(60vw, 340px); height: auto; margin: 0 auto; }
 .curtain-mark .curtain-tagline {
   display: block;
   margin-top: 10px;
