@@ -7,8 +7,20 @@
   --green-900: #0a1512;
   --green-800: #10201a;
   --green-700: #1c352b;
+  --green-light: #1d4b3a;   /* helleres Grün für den Seiten-Verlauf oben */
+  --graphite: #262b2c;      /* dunkles Silbergrau für den Verlauf unten */
   --curtain-green: #45ad4a;      /* nur für den Vorhang-Effekt */
   --curtain-green-light: #5bcb60; /* nur für den Vorhang-Effekt */
+
+  /* Durchgehender Seitenhintergrund: hellgrün → dunkelgrün → silbergrau,
+     zieht sich über die gesamte Seitenhöhe (siehe body { background }). */
+  --page-gradient: linear-gradient(
+    180deg,
+    var(--green-light) 0%,
+    var(--green-800) 22%,
+    var(--green-900) 55%,
+    var(--graphite) 100%
+  );
 
   /* Silber-Akzent (ersetzt das frühere Gold) */
   --gold: #c7ced3;
@@ -42,7 +54,8 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--ink);
-  background: var(--green-900);
+  background: var(--page-gradient);
+  background-repeat: no-repeat;
   line-height: 1.6;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
@@ -245,7 +258,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
 .hero {
   position: relative;
   color: var(--cream);
-  background: var(--green-900);
+  background: transparent;
   overflow: hidden;
 }
 .hero-grid {
@@ -287,9 +300,9 @@ section { padding: 96px 0; }
 }
 .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
 
-.bg-cream-dark { background: var(--cream-dark); }
+.bg-cream-dark { background: transparent; }
 .bg-dark {
-  background: var(--green-900);
+  background: transparent;
   color: var(--cream);
 }
 .bg-dark h2, .bg-dark h3 { color: var(--cream); }
@@ -541,7 +554,7 @@ section { padding: 96px 0; }
 
 /* ---------- Testimonial / CTA ---------- */
 .cta-banner {
-  background: var(--green-900);
+  background: transparent;
   color: var(--cream);
   padding: 90px 0;
   text-align: center;
@@ -617,7 +630,7 @@ section { padding: 96px 0; }
 
 /* ---------- Footer ---------- */
 .site-footer {
-  background: var(--green-900);
+  background: transparent;
   color: rgba(237,241,238,0.7);
   padding: 64px 0 28px;
 }
@@ -895,7 +908,7 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 
 /* ---------- Page hero (inner pages) ---------- */
 .page-hero {
-  background: var(--green-900);
+  background: transparent;
   color: var(--cream);
   padding: 70px 0 50px;
 }
