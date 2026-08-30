@@ -11,14 +11,14 @@
   --curtain-green: #45ad4a;      /* dieselben Töne wie im Vorhang-Effekt */
   --curtain-green-light: #5bcb60;
 
-  /* Durchgehender Seitenhintergrund — dieselben Farben wie der Vorhang
-     (hellgrün → grün → dunkelgrün), der helle Bereich oben ist bewusst
-     eng gehalten (~18%), damit er ungefähr nur den Hero abdeckt; alles
-     darunter ist wieder das dunkle Grün des restlichen Dark Themes. */
+  /* Durchgehender Seitenhintergrund: Silber (Header) → Grün → dunkelgrün.
+     Der grüne Übergang oben ist bewusst eng gehalten (~10%), damit er
+     ungefähr nur den Hero abdeckt; alles darunter ist wieder das dunkle
+     Grün des restlichen Dark Themes. */
   --page-gradient: linear-gradient(
     180deg,
-    var(--curtain-green-light) 0%,
-    var(--curtain-green) 22%,
+    var(--silver-header) 0%,
+    var(--curtain-green) 10%,
     var(--green-900) 48%,
     var(--green-900) 100%
   );
@@ -824,7 +824,7 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   top: 46%;
   left: 50%;
   width: min(62vmin, 460px);
-  aspect-ratio: 743 / 919; /* Format des Kristall-Sockel-Fotos */
+  aspect-ratio: 751 / 926; /* Format des Kristall-Sockel-Fotos */
   z-index: 2;
   opacity: 0;
   will-change: transform, opacity;
