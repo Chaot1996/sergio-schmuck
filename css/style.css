@@ -18,8 +18,8 @@
   --page-gradient: linear-gradient(
     180deg,
     var(--curtain-green-light) 0%,
-    var(--curtain-green) 9%,
-    var(--green-900) 20%,
+    var(--curtain-green) 22%,
+    var(--green-900) 48%,
     var(--green-900) 100%
   );
 
