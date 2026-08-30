@@ -708,12 +708,11 @@ section { padding: 96px 0; }
 .cart-total-note { font-size: 0.76rem; color: var(--ink-soft); margin-bottom: 16px; }
 
 /* ---------- Vorhang-Intro ----------
-   Ablauf: grüner Vorhang liegt geschlossen — zwei Ringe (ringversion1.png,
-   unterschiedlich groß) wachsen sanft, leicht zeitversetzt, aus der Mitte
-   heraus — ein diagonaler Lichtschimmer läuft einmal über das Metall —
-   kurze Pause — beide schrumpfen/verblassen gemeinsam in den Hintergrund
-   — das SERGIO-Logo blendet mittig ein und bleibt ~3s stehen — dann
-   öffnet sich der Vorhang klassisch nach links/rechts.
+   Ablauf: grüner Vorhang liegt geschlossen — der Ring (ringversion1.png)
+   wächst sanft aus der Mitte heraus — ein diagonaler Lichtschimmer läuft
+   einmal über das Metall — kurze Pause — der Ring schrumpft/verblasst
+   in den Hintergrund — das SERGIO-Logo blendet mittig ein und bleibt
+   ~3s stehen — dann öffnet sich der Vorhang klassisch nach links/rechts.
 ------------------------------------------------------------------- */
 html.curtain-lock,
 html.curtain-lock body { overflow: hidden; height: 100%; }
@@ -741,20 +740,18 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 .curtain-panel.left { left: 0; }
 .curtain-panel.right { right: 0; }
 
-/* Bühne für die zwei Ringe, mittig über dem Vorhang — beide exakt
-   übereinander zentriert. */
+/* Bühne für den Ring, mittig über dem Vorhang. */
 .ring-stage {
   position: absolute;
   top: 46%;
   left: 50%;
+  width: min(92vmin, 680px);
   aspect-ratio: 1 / 1;
   z-index: 2;
   opacity: 0;
   will-change: transform, opacity;
   filter: drop-shadow(0 18px 34px rgba(0,0,0,0.5));
 }
-.ring-stage.outer { width: min(92vmin, 680px); }
-.ring-stage.inner { width: min(58vmin, 430px); z-index: 3; }
 
 .ring-visual {
   position: absolute;
@@ -780,7 +777,7 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   mask-size: 100% 100%;
 }
 
-/* Logo: erscheint erst, nachdem beide Ringe verschwunden sind — mittig,
+/* Logo: erscheint erst, nachdem der Ring verschwunden ist — mittig,
    bleibt ~3s stehen, bevor der Vorhang öffnet. */
 .curtain-mark {
   position: absolute;
@@ -805,29 +802,21 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   color: #4d3608;
 }
 
-/* Beide Ringe wachsen sanft aus der Mitte (leicht zeitversetzt), halten
-   kurz und schrumpfen/verblassen dann gemeinsam wieder weg. */
-@keyframes outerLife {
+/* Der Ring wächst sanft aus der Mitte, hält kurz und schrumpft/
+   verblasst dann wieder weg. */
+@keyframes ringLife {
   0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.55); }
   14%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   47%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   59%  { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
 }
-@keyframes innerLife {
-  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.55); }
-  4%   { opacity: 0; transform: translate(-50%, -50%) scale(0.55); }
-  19%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  47%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  59%  { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
-}
-/* Sweep läuft, sobald beide Ringe gewachsen sind, einmal diagonal durch. */
+/* Sweep läuft, sobald der Ring gewachsen ist, einmal diagonal durch. */
 @keyframes shimmerSweep {
-  0%, 19%   { opacity: 0; background-position: -140% -140%; }
-  23%       { opacity: 0.9; }
-  34%       { opacity: 0.9; background-position: 140% 140%; }
-  38%, 100% { opacity: 0; background-position: 140% 140%; }
+  0%, 15%   { opacity: 0; background-position: -140% -140%; }
+  19%       { opacity: 0.9; }
+  30%       { opacity: 0.9; background-position: 140% 140%; }
+  34%, 100% { opacity: 0; background-position: 140% 140%; }
 }
 /* Logo blendet erst nach dem Verschwinden der Ringe ein, hält ~3s
    (49%–91% von 8s ≈ 3s) und blendet kurz vor dem Öffnen wieder aus. */
@@ -840,8 +829,7 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 @keyframes curtainOpenRight { 0%, 91% { transform: translateX(0%); } 100% { transform: translateX(100%); } }
 @keyframes curtainBackdropOut { 0%, 94% { opacity: 1; } 100% { opacity: 0; } }
 
-.curtain.is-playing .ring-stage.outer { animation: outerLife 8s ease-in-out forwards; }
-.curtain.is-playing .ring-stage.inner { animation: innerLife 8s ease-in-out forwards; }
+.curtain.is-playing .ring-stage { animation: ringLife 8s ease-in-out forwards; }
 .curtain.is-playing .ring-shimmer { animation: shimmerSweep 8s ease-in-out forwards; }
 .curtain.is-playing .curtain-mark { animation: markIn 8s ease forwards; }
 .curtain.is-playing .curtain-panel.left { animation: curtainOpenLeft 8s cubic-bezier(0.65,0,0.35,1) forwards; }
