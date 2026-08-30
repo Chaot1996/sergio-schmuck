@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kontakt — SERGIO Schmuck</title>
-<meta name="description" content="Termine nach Vereinbarung: Kontaktiere SERGIO Schmuck in Bad Wildbad für Eheringe, Reparaturen, Sonderanfertigungen oder Permanent Schmuck.">
+<title>Leistungen — SERGIO Schmuck</title>
+<meta name="description" content="Eheringe, Schmuckreparaturen, Sonderanfertigungen und Permanent Schmuck von SERGIO in Bad Wildbad — persönliche, unverbindliche Beratung.">
 <link rel="icon" href="assets/img/logo.jpg">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -34,9 +34,9 @@
     <nav class="main-nav" id="mainNav">
       <a href="index.html">Start</a>
       <a href="shop.html">Shop</a>
-      <a href="leistungen.html">Leistungen</a>
+      <a href="leistungen.html" class="active">Leistungen</a>
       <a href="permanent-schmuck.html">Permanent Schmuck</a>
-      <a href="kontakt.html" class="active">Kontakt</a>
+      <a href="kontakt.html">Kontakt</a>
     </nav>
     <div class="header-actions">
       <button class="cart-btn" id="cartToggle" aria-label="Warenkorb öffnen">
@@ -49,62 +49,57 @@
 
 <section class="page-hero">
   <div class="container">
-    <div class="breadcrumb"><a href="index.html">Start</a> / Kontakt</div>
-    <span class="eyebrow">Termine nach Vereinbarung</span>
-    <h1>Kontakt &amp; Anfrage</h1>
+    <div class="breadcrumb"><a href="index.html">Start</a> / Leistungen</div>
+    <span class="eyebrow">Handwerk mit Herz</span>
+    <h1>Leistungen</h1>
+    <p style="max-width:560px; color:rgba(15,43,35,0.75);">Ob neues Wunschstück, Reparatur oder ein Termin für Permanent Schmuck — Sergio berät Sie persönlich und unverbindlich.</p>
   </div>
 </section>
 
-<section>
-  <div class="container contact-grid">
-    <div class="contact-info">
-      <h2>Lass uns sprechen</h2>
-      <p>Ob Wunschstück aus dem Shop, Ehering, Reparatur oder ein Termin für Permanent Schmuck — melde dich gerne unverbindlich. Sergio meldet sich zeitnah persönlich zurück.</p>
-      <dl>
-        <dt>Adresse</dt>
-        <dd>Sergio Ebeling<br>König-Karl-Straße 102<br>75323 Bad Wildbad</dd>
-        <dt>Telefon</dt>
-        <dd><a href="tel:+491721847544">0172 18 47 54 4</a></dd>
-        <dt>E-Mail</dt>
-        <dd><a href="mailto:info@sergio-schmuck.de">info@sergio-schmuck.de</a> <span class="badge-todo">Platzhalter — bitte prüfen</span></dd>
-        <dt>Instagram</dt>
-        <dd><a href="https://instagram.com/sergio_schmuck" target="_blank" rel="noopener">@sergio_schmuck</a></dd>
-        <dt>Termine</dt>
-        <dd>Nach Vereinbarung</dd>
-      </dl>
+<section class="section-tight">
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">♡</div>
+      <h3>Eheringe</h3>
+      <p>Individuelle Trauringe mit Persönlichkeit — von der ersten Idee bis zur Anprobe.</p>
     </div>
+    <div class="service-card">
+      <div class="service-icon">✦</div>
+      <h3>Schmuckreparaturen</h3>
+      <p>Liebgewonnener Schmuck wird mit Sorgfalt repariert, restauriert und erhalten.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">◈</div>
+      <h3>Sonderanfertigungen</h3>
+      <p>Ein Unikat nach Ihren ganz persönlichen Vorstellungen — handgefertigt in der Werkstatt.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚭</div>
+      <h3>Permanent Schmuck</h3>
+      <p>Verschlusslose Armbänder &amp; Fußketten, direkt vor Ort verschweißt — für besondere Verbindungen. <a href="permanent-schmuck.html" style="text-decoration:underline;">Mehr erfahren →</a></p>
+    </div>
+  </div>
+</section>
 
-    <div>
-      <h2>Anfrage senden</h2>
-      <form id="inquiryForm">
-        <div class="form-row">
-          <div class="form-field">
-            <label for="name">Name *</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          <div class="form-field">
-            <label for="email">E-Mail *</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-        </div>
-        <div class="form-field">
-          <label for="phone">Telefon (optional)</label>
-          <input type="tel" id="phone" name="phone">
-        </div>
-        <div class="form-field">
-          <label for="message">Nachricht *</label>
-          <textarea id="message" name="message" required placeholder="Erzähl uns von deinem Wunschstück oder gewünschten Termin …"></textarea>
-        </div>
-        <div class="form-field">
-          <label>Aktuelle Anfrage aus dem Warenkorb</label>
-          <div id="cartSummaryPreview" style="font-size:0.85rem; color:var(--ink-soft); background:var(--cream-dark); padding:14px; border-radius:3px; white-space:pre-line;"></div>
-          <input type="hidden" id="cartSummaryField" name="cartSummary">
-        </div>
-        <button type="submit" class="btn btn-primary btn-full">Anfrage per E-Mail senden</button>
-        <p class="form-note">Beim Absenden öffnet sich dein E-Mail-Programm mit einer vorausgefüllten Nachricht an SERGIO. Es handelt sich um eine unverbindliche Anfrage, keine verbindliche Bestellung.</p>
-        <div class="form-success" id="formSuccess">Danke! Dein E-Mail-Programm sollte sich mit der Anfrage geöffnet haben. Falls nicht, schreib uns direkt an <a href="mailto:info@sergio-schmuck.de">info@sergio-schmuck.de</a>.</div>
-      </form>
+<section class="about">
+  <div class="container about-grid">
+    <div class="about-media">
+      <img src="assets/img/process-ring-hands.png" alt="Sergio bei der Arbeit an einem Ring">
     </div>
+    <div>
+      <span class="eyebrow">Ablauf</span>
+      <h2>So entsteht Ihr Schmuckstück</h2>
+      <p>Im persönlichen Gespräch klären wir Wünsche, Material und Budget — unverbindlich und in Ruhe. Danach fertigt Sergio Ihr Stück von Hand in der Werkstatt, mit regelmäßigen Anproben bei größeren Arbeiten wie Eheringen.</p>
+      <p>Auch für kleinere Anliegen — eine gerissene Kette, ein geweiteter Ring — lohnt sich ein Termin. Vieles lässt sich reparieren, statt neu zu kaufen.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <span class="eyebrow">Termine nach Vereinbarung</span>
+    <h2>Lassen Sie uns über Ihr Wunschstück sprechen.</h2>
+    <a href="kontakt.html" class="btn btn-primary">Jetzt Kontakt aufnehmen</a>
   </div>
 </section>
 
@@ -150,7 +145,7 @@
   <div class="cart-drawer-foot">
     <div class="cart-total-row"><span>Summe</span><span id="cartTotal">0,00 €</span></div>
     <p class="cart-total-note">Unverbindliche Anfrage — kein Kauf. Sergio meldet sich mit einem persönlichen Angebot.</p>
-    <a href="#inquiryForm" class="btn btn-primary btn-full" id="cartCheckoutBtn" onclick="closeCart()">Zum Formular</a>
+    <a href="kontakt.html" class="btn btn-primary btn-full" id="cartCheckoutBtn">Anfrage senden</a>
   </div>
 </aside>
 
