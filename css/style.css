@@ -824,7 +824,7 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   top: 46%;
   left: 50%;
   width: min(62vmin, 460px);
-  aspect-ratio: 617 / 858; /* Format des Kristall-Sockel-Fotos */
+  aspect-ratio: 743 / 919; /* Format des Kristall-Sockel-Fotos */
   z-index: 2;
   opacity: 0;
   will-change: transform, opacity;
