@@ -823,8 +823,8 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   position: absolute;
   top: 46%;
   left: 50%;
-  width: min(92vmin, 680px);
-  aspect-ratio: 1 / 1;
+  width: min(62vmin, 460px);
+  aspect-ratio: 617 / 916; /* Format des Kristall-Sockel-Fotos */
   z-index: 2;
   opacity: 0;
   will-change: transform, opacity;
@@ -838,7 +838,7 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 .ring-visual {
   position: absolute;
   inset: 0;
-  background-image: url("../assets/img/curtain-ring.png");
+  background-image: url("../assets/img/curtain-ring-crystal.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -853,8 +853,8 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   background-position: -140% -140%;
   mix-blend-mode: screen;
   opacity: 0;
-  -webkit-mask-image: url("../assets/img/curtain-ring.png");
-  mask-image: url("../assets/img/curtain-ring.png");
+  -webkit-mask-image: url("../assets/img/curtain-ring-crystal.png");
+  mask-image: url("../assets/img/curtain-ring-crystal.png");
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 }
