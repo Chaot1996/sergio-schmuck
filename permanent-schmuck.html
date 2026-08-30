@@ -10,21 +10,6 @@
 </head>
 <body>
 
-<div class="curtain" id="curtain">
-  <div class="curtain-backdrop"></div>
-  <div class="curtain-panel left"></div>
-  <div class="curtain-panel right"></div>
-  <div class="ring-stage" aria-hidden="true">
-    <div class="ring-visual"></div>
-    <div class="ring-shimmer"></div>
-  </div>
-  <div class="curtain-mark">
-    <img class="curtain-wordmark" src="assets/img/curtain-wordmark.png" alt="SERGIO">
-    <span class="curtain-tagline">Handgefertigter Schmuck</span>
-  </div>
-</div>
-<noscript><style>#curtain{display:none;}</style></noscript>
-
 <header class="site-header">
   <div class="header-inner">
     <a href="index.html" class="brand">
@@ -84,6 +69,23 @@
 </section>
 
 <section>
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Galerie</span>
+      <h2>Permanent Schmuck in echt</h2>
+    </div>
+    <div class="filter-bar" id="permFilterBar">
+      <button class="filter-btn active" data-filter="alle">Alle</button>
+      <button class="filter-btn" data-filter="unikate">Handgefertigte Unikate</button>
+      <button class="filter-btn" data-filter="fusskettchen">Fußkettchen</button>
+      <button class="filter-btn" data-filter="armkettchen">Armkettchen</button>
+      <button class="filter-btn" data-filter="hals-bauchketten">Hals- und Bauchketten</button>
+    </div>
+    <div class="filter-gallery-grid" id="permGalleryGrid"></div>
+  </div>
+</section>
+
+<section class="bg-cream-dark">
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">Gut zu wissen</span>
@@ -160,10 +162,10 @@
   </div>
 </aside>
 
-<script src="js/curtain.js"></script>
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/main.js"></script>
+<script src="js/permanent-gallery.js"></script>
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
