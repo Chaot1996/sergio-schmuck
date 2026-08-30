@@ -856,15 +856,13 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
    Aufsicht), Speichen-Look per Conic-Gradient macht die Drehung
    sichtbar. */
 .turntable-disc {
+  /* Steht fest — nur der Ring darüber dreht sich. Ruhige, polierte
+     Silberfläche statt Speichen-Optik (die brauchte es nur, um eine
+     eigene Drehung sichtbar zu machen). */
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: conic-gradient(
-    from 0deg,
-    #eef2f4, #9aa1a6, #eef2f4, #9aa1a6,
-    #eef2f4, #9aa1a6, #eef2f4, #9aa1a6,
-    #eef2f4, #9aa1a6, #eef2f4
-  );
+  background: radial-gradient(ellipse at 50% 30%, #f4f7f8 0%, #cdd3d7 45%, #8f979c 100%);
   box-shadow: 0 16px 34px rgba(0,0,0,0.5), inset 0 2px 8px rgba(255,255,255,0.35);
 }
 .ring-spin {
@@ -954,7 +952,6 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 @keyframes curtainBackdropOut { 0%, 94% { opacity: 1; } 100% { opacity: 0; } }
 
 .curtain.is-playing .ring-stage { animation: ringLife 6s ease-in-out forwards; }
-.curtain.is-playing .disc-spin,
 .curtain.is-playing .ring-spin { animation: turntableSpin 6s linear forwards; }
 .curtain.is-playing .ring-shimmer { animation: shimmerSweep 6s ease-in-out forwards; }
 .curtain.is-playing .curtain-mark { animation: markIn 6s ease forwards; }
