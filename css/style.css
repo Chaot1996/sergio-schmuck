@@ -745,7 +745,8 @@ section { padding: 96px 0; }
    wächst sanft aus der Mitte heraus — ein diagonaler Lichtschimmer läuft
    einmal über das Metall — kurze Pause — der Ring schrumpft/verblasst
    in den Hintergrund — das SERGIO-Logo blendet mittig ein und bleibt
-   ~3s stehen — dann öffnet sich der Vorhang klassisch nach links/rechts.
+   kurz stehen — dann öffnet sich der Vorhang klassisch nach links/rechts.
+   Gesamtdauer: 6s (siehe TOTAL_MS in js/curtain.js).
 ------------------------------------------------------------------- */
 html.curtain-lock,
 html.curtain-lock body { overflow: hidden; height: 100%; }
@@ -850,8 +851,8 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   30%       { opacity: 0.9; background-position: 140% 140%; }
   34%, 100% { opacity: 0; background-position: 140% 140%; }
 }
-/* Logo blendet erst nach dem Verschwinden der Ringe ein, hält ~3s
-   (49%–91% von 8s ≈ 3s) und blendet kurz vor dem Öffnen wieder aus. */
+/* Logo blendet erst nach dem Verschwinden des Rings ein, hält kurz
+   (49%–91% von 6s ≈ 2,5s) und blendet kurz vor dem Öffnen wieder aus. */
 @keyframes markIn {
   0%, 42%   { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
   49%, 91%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
@@ -861,12 +862,12 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 @keyframes curtainOpenRight { 0%, 91% { transform: translateX(0%); } 100% { transform: translateX(100%); } }
 @keyframes curtainBackdropOut { 0%, 94% { opacity: 1; } 100% { opacity: 0; } }
 
-.curtain.is-playing .ring-stage { animation: ringLife 8s ease-in-out forwards; }
-.curtain.is-playing .ring-shimmer { animation: shimmerSweep 8s ease-in-out forwards; }
-.curtain.is-playing .curtain-mark { animation: markIn 8s ease forwards; }
-.curtain.is-playing .curtain-panel.left { animation: curtainOpenLeft 8s cubic-bezier(0.65,0,0.35,1) forwards; }
-.curtain.is-playing .curtain-panel.right { animation: curtainOpenRight 8s cubic-bezier(0.65,0,0.35,1) forwards; }
-.curtain.is-playing .curtain-backdrop { animation: curtainBackdropOut 8s linear forwards; }
+.curtain.is-playing .ring-stage { animation: ringLife 6s ease-in-out forwards; }
+.curtain.is-playing .ring-shimmer { animation: shimmerSweep 6s ease-in-out forwards; }
+.curtain.is-playing .curtain-mark { animation: markIn 6s ease forwards; }
+.curtain.is-playing .curtain-panel.left { animation: curtainOpenLeft 6s cubic-bezier(0.65,0,0.35,1) forwards; }
+.curtain.is-playing .curtain-panel.right { animation: curtainOpenRight 6s cubic-bezier(0.65,0,0.35,1) forwards; }
+.curtain.is-playing .curtain-backdrop { animation: curtainBackdropOut 6s linear forwards; }
 
 .curtain.is-hidden { display: none; }
 

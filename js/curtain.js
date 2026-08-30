@@ -3,13 +3,13 @@
  *
  * Die eigentliche Choreografie (Ring wächst sanft aus der Mitte → ein
  * Lichtschimmer läuft einmal diagonal übers Metall → Ring verschwindet
- * in den Hintergrund → SERGIO-Logo blendet mittig ein und bleibt ~3s
+ * in den Hintergrund → SERGIO-Logo blendet mittig ein und bleibt kurz
  * stehen → Vorhang öffnet sich) steckt als CSS-Keyframe-Animation in
  * style.css (siehe "Vorhang-Intro"); hier wird nur gestartet,
  * respektiert und nach Ablauf aufgeräumt.
  */
 (function () {
-  const TOTAL_MS = 8000;
+  const TOTAL_MS = 6000;
   const curtain = document.getElementById("curtain");
   if (!curtain) return;
 
