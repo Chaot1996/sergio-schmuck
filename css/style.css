@@ -3,24 +3,34 @@
    ============================================ */
 
 :root {
-  --green-900: #0f2b23;
-  --green-800: #163a30;
-  --green-700: #1e4a3d;
+  /* Dark-Theme-Flächen: dunkelgrün, von Basis bis leicht angehoben */
+  --green-900: #0a1512;
+  --green-800: #10201a;
+  --green-700: #1c352b;
   --curtain-green: #45ad4a;      /* nur für den Vorhang-Effekt */
   --curtain-green-light: #5bcb60; /* nur für den Vorhang-Effekt */
-  --gold: #c9a24a;
-  --gold-light: #e2c377;
-  --cream: #f8f4ea;
-  --cream-dark: #efe8d8;
-  --ink: #201f1a;
-  --ink-soft: #514d43;
-  --line: #e2dac8;
+
+  /* Silber-Akzent (ersetzt das frühere Gold) */
+  --gold: #c7ced3;
+  --gold-light: #eef2f4;
+
+  /* --cream war früher der helle Seitenhintergrund und zugleich die
+     helle Textfarbe auf dunklen Flächen — im Dark Theme wird fast
+     überall Text daraus, die paar Hintergrund-Stellen sind unten
+     einzeln auf --green-800/700 umgestellt. --ink/--ink-soft bleiben
+     als Text-Rollen bestehen, jetzt nur hell statt dunkel. */
+  --cream: #edf1ee;
+  --cream-dark: #1c352b;
+  --ink: #edf1ee;
+  --ink-soft: #a7b3ac;
+  --line: rgba(199,206,211,0.16);
 
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-body: "Jost", "Helvetica Neue", Arial, sans-serif;
 
   --container: 1180px;
-  --radius: 2px;
+  --radius: 3px;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap");
@@ -32,7 +42,7 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--ink);
-  background: var(--cream);
+  background: var(--green-900);
   line-height: 1.6;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
@@ -40,7 +50,7 @@ body {
 
 img { max-width: 100%; display: block; }
 
-a { color: inherit; text-decoration: none; }
+a { color: inherit; text-decoration: none; transition: color 0.3s var(--ease), opacity 0.3s var(--ease), border-color 0.3s var(--ease); }
 
 .container {
   max-width: var(--container);
@@ -53,7 +63,7 @@ h1, h2, h3, h4 {
   font-weight: 500;
   letter-spacing: 0.01em;
   margin: 0 0 0.5em;
-  color: var(--green-900);
+  color: var(--ink);
 }
 
 h1 { font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.05; }
@@ -94,7 +104,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   border-radius: var(--radius);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.35s var(--ease);
 }
 .btn-primary {
   background: var(--gold);
@@ -105,21 +115,21 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
 .btn-outline {
   background: transparent;
   color: var(--cream);
-  border-color: rgba(248,244,234,0.5);
+  border-color: rgba(199,206,211,0.5);
 }
-.btn-outline:hover { border-color: var(--cream); background: rgba(248,244,234,0.08); }
+.btn-outline:hover { border-color: var(--cream); background: rgba(199,206,211,0.1); }
 .btn-dark {
-  background: var(--green-900);
-  color: var(--cream);
-  border-color: var(--green-900);
+  background: var(--green-700);
+  color: var(--ink);
+  border-color: var(--green-700);
 }
-.btn-dark:hover { background: var(--green-700); }
+.btn-dark:hover { background: var(--green-800); border-color: var(--gold); }
 .btn-ghost {
   background: transparent;
-  border-color: var(--green-900);
-  color: var(--green-900);
+  border-color: var(--gold);
+  color: var(--gold);
 }
-.btn-ghost:hover { background: var(--green-900); color: var(--cream); }
+.btn-ghost:hover { background: var(--gold); color: var(--green-900); }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .btn-full { width: 100%; }
 
@@ -129,7 +139,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   top: 0;
   z-index: 100;
   background: var(--green-900);
-  border-bottom: 1px solid rgba(201,162,74,0.25);
+  border-bottom: 1px solid rgba(199,206,211,0.25);
 }
 .header-inner {
   display: flex;
@@ -185,7 +195,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: none;
-  border: 1px solid rgba(248,244,234,0.35);
+  border: 1px solid rgba(237,241,238,0.35);
   padding: 9px 16px;
   border-radius: var(--radius);
   cursor: pointer;
@@ -223,7 +233,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
     padding: 26px 28px;
     gap: 22px;
     transform: translateY(-110%);
-    transition: transform 0.28s ease;
+    transition: transform 0.4s var(--ease);
     z-index: 90;
   }
   .main-nav.open { transform: translateY(0); }
@@ -234,38 +244,39 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  min-height: 88vh;
-  display: flex;
-  align-items: center;
   color: var(--cream);
-  background: linear-gradient(180deg, rgba(15,43,35,0.55), rgba(15,43,35,0.86)), var(--green-900);
+  background: var(--green-900);
   overflow: hidden;
 }
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("../assets/img/hero-anklets-water.png");
-  background-size: cover;
-  background-position: center 30%;
-  opacity: 0.55;
-  z-index: 0;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding: 80px 24px;
 }
 .hero-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 640px;
-  padding: 80px 24px;
+  max-width: 560px;
+}
+.hero-media img {
+  width: 100%;
+  border-radius: 3px;
+  aspect-ratio: 4/5;
+  object-fit: cover;
 }
 .hero .eyebrow { color: var(--gold-light); }
 .hero h1 { color: var(--cream); }
 .hero-lede {
   font-size: 1.08rem;
-  color: rgba(248,244,234,0.85);
+  color: rgba(237,241,238,0.85);
   max-width: 480px;
   margin-bottom: 34px;
 }
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+}
 
 /* ---------- Sections ---------- */
 section { padding: 96px 0; }
@@ -282,7 +293,7 @@ section { padding: 96px 0; }
   color: var(--cream);
 }
 .bg-dark h2, .bg-dark h3 { color: var(--cream); }
-.bg-dark p { color: rgba(248,244,234,0.75); }
+.bg-dark p { color: rgba(237,241,238,0.75); }
 .bg-dark .eyebrow { color: var(--gold-light); }
 
 /* ---------- About / story ---------- */
@@ -305,7 +316,7 @@ section { padding: 96px 0; }
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.5rem;
-  color: var(--green-900);
+  color: var(--ink);
   border-left: 2px solid var(--gold);
   padding-left: 22px;
   margin: 28px 0;
@@ -329,11 +340,11 @@ section { padding: 96px 0; }
   border: 1px solid var(--line);
 }
 .service-card {
-  background: var(--cream);
+  background: var(--green-800);
   padding: 40px 28px;
-  transition: background 0.2s ease;
+  transition: background 0.35s var(--ease);
 }
-.service-card:hover { background: var(--cream-dark); }
+.service-card:hover { background: var(--green-700); }
 .service-icon {
   width: 46px;
   height: 46px;
@@ -373,11 +384,12 @@ section { padding: 96px 0; }
   text-transform: uppercase;
   cursor: pointer;
   color: var(--ink-soft);
+  transition: all 0.35s var(--ease);
 }
 .filter-btn.active,
 .filter-btn:hover {
-  border-color: var(--green-900);
-  color: var(--green-900);
+  border-color: var(--gold);
+  color: var(--gold);
   background: var(--cream-dark);
 }
 
@@ -394,11 +406,12 @@ section { padding: 96px 0; }
 }
 
 .product-card {
-  background: #fff;
+  background: var(--green-800);
   border: 1px solid var(--line);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: border-color 0.35s var(--ease), transform 0.35s var(--ease);
 }
 .product-media {
   position: relative;
@@ -410,9 +423,10 @@ section { padding: 96px 0; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s var(--ease);
 }
 .product-card:hover .product-media img { transform: scale(1.06); }
+.product-card:hover { border-color: var(--gold); transform: translateY(-3px); }
 .product-badge {
   position: absolute;
   top: 14px;
@@ -443,7 +457,7 @@ section { padding: 96px 0; }
 .product-price {
   font-family: var(--font-display);
   font-size: 1.15rem;
-  color: var(--green-900);
+  color: var(--ink);
   margin-top: auto;
   padding-top: 10px;
 }
@@ -460,7 +474,7 @@ section { padding: 96px 0; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.35s var(--ease);
 }
 .product-add:hover { background: var(--gold); color: var(--green-900); }
 .product-add.added { background: var(--gold); color: var(--green-900); }
@@ -489,7 +503,7 @@ section { padding: 96px 0; }
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 3px;
-  transition: transform 0.35s ease;
+  transition: transform 0.4s var(--ease);
 }
 .filter-gallery-grid img:hover { transform: scale(1.04); }
 @media (max-width: 860px) { .filter-gallery-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -504,7 +518,7 @@ section { padding: 96px 0; }
 }
 .category-chips span {
   padding: 8px 18px;
-  border: 1px solid rgba(226,195,119,0.45);
+  border: 1px solid rgba(238,242,244,0.45);
   border-radius: 999px;
   font-size: 0.78rem;
   letter-spacing: 0.03em;
@@ -519,7 +533,7 @@ section { padding: 96px 0; }
   margin-top: 40px;
 }
 .fact {
-  border-top: 1px solid rgba(201,162,74,0.4);
+  border-top: 1px solid rgba(199,206,211,0.4);
   padding-top: 16px;
 }
 .fact h4 { color: var(--gold-light); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--font-body); }
@@ -571,11 +585,12 @@ section { padding: 96px 0; }
   width: 100%;
   padding: 12px 14px;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--green-800);
   font-family: var(--font-body);
   font-size: 0.95rem;
   border-radius: var(--radius);
   color: var(--ink);
+  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 .form-field textarea { min-height: 120px; resize: vertical; }
 .form-field input:focus,
@@ -603,7 +618,7 @@ section { padding: 96px 0; }
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--green-900);
-  color: rgba(248,244,234,0.7);
+  color: rgba(237,241,238,0.7);
   padding: 64px 0 28px;
 }
 .footer-grid {
@@ -611,7 +626,7 @@ section { padding: 96px 0; }
   grid-template-columns: 1.4fr 1fr 1fr;
   gap: 40px;
   padding-bottom: 40px;
-  border-bottom: 1px solid rgba(248,244,234,0.15);
+  border-bottom: 1px solid rgba(237,241,238,0.15);
 }
 .footer-grid h4 {
   color: var(--gold-light);
@@ -642,10 +657,10 @@ section { padding: 96px 0; }
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15,43,35,0.55);
+  background: rgba(6,12,10,0.65);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.35s var(--ease);
   z-index: 200;
 }
 .overlay.open { opacity: 1; pointer-events: auto; }
@@ -656,10 +671,10 @@ section { padding: 96px 0; }
   right: 0;
   bottom: 0;
   width: min(420px, 100%);
-  background: var(--cream);
+  background: var(--green-800);
   z-index: 201;
   transform: translateX(100%);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s var(--ease);
   display: flex;
   flex-direction: column;
 }
@@ -711,11 +726,14 @@ section { padding: 96px 0; }
 .qty-control button {
   width: 22px; height: 22px;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--green-700);
+  color: var(--ink);
   cursor: pointer;
   border-radius: 3px;
   line-height: 1;
+  transition: background 0.3s var(--ease);
 }
+.qty-control button:hover { background: var(--green-800); }
 .cart-item-remove {
   background: none;
   border: none;
@@ -736,7 +754,7 @@ section { padding: 96px 0; }
   font-family: var(--font-display);
   font-size: 1.2rem;
   margin-bottom: 6px;
-  color: var(--green-900);
+  color: var(--ink);
 }
 .cart-total-note { font-size: 0.76rem; color: var(--ink-soft); margin-bottom: 16px; }
 
@@ -832,7 +850,7 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   font-size: 0.8rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #4d3608;
+  color: #33393b;
 }
 
 /* Der Ring wächst sanft aus der Mitte, hält kurz und schrumpft/
@@ -883,7 +901,7 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 }
 .page-hero .eyebrow { color: var(--gold-light); }
 .page-hero h1 { color: var(--cream); margin-bottom: 10px; }
-.breadcrumb { font-size: 0.78rem; color: rgba(248,244,234,0.6); }
+.breadcrumb { font-size: 0.78rem; color: rgba(237,241,238,0.6); }
 .breadcrumb a:hover { color: var(--gold-light); }
 
 /* ---------- Legal pages ---------- */
@@ -894,9 +912,9 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 
 .badge-todo {
   display: inline-block;
-  background: #fdeccb;
-  color: #7a4b00;
-  border: 1px solid #e9c479;
+  background: rgba(240,196,109,0.15);
+  color: #f0c46d;
+  border: 1px solid rgba(240,196,109,0.4);
   font-size: 0.72rem;
   padding: 2px 8px;
   border-radius: 4px;
