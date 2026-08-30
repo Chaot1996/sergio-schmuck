@@ -831,6 +831,46 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   filter: drop-shadow(0 18px 34px rgba(0,0,0,0.5));
 }
 
+/* Dreh-Wrapper: Scheibe + Ring drehen sich gemeinsam als eine starre
+   Einheit um ihre gemeinsame Mitte — eine flache, klassische
+   Produktdisplay-Drehung statt einer 3D-Kippung. */
+/* Scheibe und Ring bekommen je einen eigenen Dreh-Wrapper, der um die
+   jeweils EIGENE Mitte rotiert (kein Taumeln/Wackeln, auch wenn die
+   Scheibe unterhalb der Ringmitte sitzt) — beide laufen mit derselben
+   Keyframe-Animation exakt synchron. */
+.disc-spin {
+  /* Zentrierung per Margin statt transform: translate(), weil die
+     Dreh-Animation weiter unten die transform-Eigenschaft für die
+     Rotation braucht — transform ersetzt sich, statt sich zu
+     addieren, ein translate() in der Basis-Regel würde sonst beim
+     Start der Animation verloren gehen. */
+  position: absolute;
+  left: 50%;
+  top: 66%;
+  width: 148%;
+  height: 26%;
+  margin-left: -74%;
+  margin-top: -13%;
+}
+/* Silberne Drehscheibe unter dem Ring: als flache Ellipse (angedeutete
+   Aufsicht), Speichen-Look per Conic-Gradient macht die Drehung
+   sichtbar. */
+.turntable-disc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #eef2f4, #9aa1a6, #eef2f4, #9aa1a6,
+    #eef2f4, #9aa1a6, #eef2f4, #9aa1a6,
+    #eef2f4, #9aa1a6, #eef2f4
+  );
+  box-shadow: 0 16px 34px rgba(0,0,0,0.5), inset 0 2px 8px rgba(255,255,255,0.35);
+}
+.ring-spin {
+  position: absolute;
+  inset: 0;
+}
 .ring-visual {
   position: absolute;
   inset: 0;
@@ -888,6 +928,13 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   59%  { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
 }
+/* Scheibe + Ring drehen sich einmal, solange der Ring vollständig
+   sichtbar ist (gleiches Zeitfenster wie der Hold in ringLife). */
+@keyframes turntableSpin {
+  0%, 14% { transform: rotate(0deg); }
+  47%     { transform: rotate(360deg); }
+  100%    { transform: rotate(360deg); }
+}
 /* Sweep läuft, sobald der Ring gewachsen ist, einmal diagonal durch. */
 @keyframes shimmerSweep {
   0%, 15%   { opacity: 0; background-position: -140% -140%; }
@@ -907,6 +954,8 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 @keyframes curtainBackdropOut { 0%, 94% { opacity: 1; } 100% { opacity: 0; } }
 
 .curtain.is-playing .ring-stage { animation: ringLife 6s ease-in-out forwards; }
+.curtain.is-playing .disc-spin,
+.curtain.is-playing .ring-spin { animation: turntableSpin 6s linear forwards; }
 .curtain.is-playing .ring-shimmer { animation: shimmerSweep 6s ease-in-out forwards; }
 .curtain.is-playing .curtain-mark { animation: markIn 6s ease forwards; }
 .curtain.is-playing .curtain-panel.left { animation: curtainOpenLeft 6s cubic-bezier(0.65,0,0.35,1) forwards; }
