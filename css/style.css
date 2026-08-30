@@ -827,7 +827,6 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   aspect-ratio: 1 / 1;
   z-index: 2;
   opacity: 0;
-  perspective: 1000px;
   will-change: transform, opacity;
   filter: drop-shadow(0 18px 34px rgba(0,0,0,0.5));
 }
@@ -923,14 +922,6 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   59%  { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
 }
-/* Der Ring dreht sich einmal um die vertikale Achse (Drehteller-
-   Effekt), solange er vollständig sichtbar ist (gleiches Zeitfenster
-   wie der Hold in ringLife). */
-@keyframes turntableSpin {
-  0%, 14% { transform: rotateY(0deg); }
-  47%     { transform: rotateY(360deg); }
-  100%    { transform: rotateY(360deg); }
-}
 /* Sweep läuft, sobald der Ring gewachsen ist, einmal diagonal durch. */
 @keyframes shimmerSweep {
   0%, 15%   { opacity: 0; background-position: -140% -140%; }
@@ -950,7 +941,6 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
 @keyframes curtainBackdropOut { 0%, 94% { opacity: 1; } 100% { opacity: 0; } }
 
 .curtain.is-playing .ring-stage { animation: ringLife 6s ease-in-out forwards; }
-.curtain.is-playing .ring-spin { animation: turntableSpin 6s linear forwards; }
 .curtain.is-playing .ring-shimmer { animation: shimmerSweep 6s ease-in-out forwards; }
 .curtain.is-playing .curtain-mark { animation: markIn 6s ease forwards; }
 .curtain.is-playing .curtain-panel.left { animation: curtainOpenLeft 6s cubic-bezier(0.65,0,0.35,1) forwards; }
