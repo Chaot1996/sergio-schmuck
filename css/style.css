@@ -7,24 +7,26 @@
   --green-900: #0a1512;
   --green-800: #10201a;
   --green-700: #1c352b;
-  --green-light: #1d4b3a;   /* helleres Grün für den Seiten-Verlauf oben */
-  --graphite: #262b2c;      /* dunkles Silbergrau für den Verlauf unten */
-  --curtain-green: #45ad4a;      /* nur für den Vorhang-Effekt */
-  --curtain-green-light: #5bcb60; /* nur für den Vorhang-Effekt */
+  --graphite: #262b2c;      /* dunkles Silbergrau, u.a. Akzente im Hero */
+  --curtain-green: #45ad4a;      /* dieselben Töne wie im Vorhang-Effekt */
+  --curtain-green-light: #5bcb60;
 
-  /* Durchgehender Seitenhintergrund: hellgrün → dunkelgrün → silbergrau,
-     zieht sich über die gesamte Seitenhöhe (siehe body { background }). */
+  /* Durchgehender Seitenhintergrund — dieselben Farben wie der Vorhang
+     (hellgrün → grün → dunkelgrün), der helle Bereich oben ist bewusst
+     eng gehalten (~18%), damit er ungefähr nur den Hero abdeckt; alles
+     darunter ist wieder das dunkle Grün des restlichen Dark Themes. */
   --page-gradient: linear-gradient(
     180deg,
-    var(--green-light) 0%,
-    var(--green-800) 22%,
-    var(--green-900) 55%,
-    var(--graphite) 100%
+    var(--curtain-green-light) 0%,
+    var(--curtain-green) 9%,
+    var(--green-900) 20%,
+    var(--green-900) 100%
   );
 
   /* Silber-Akzent (ersetzt das frühere Gold) */
   --gold: #c7ced3;
   --gold-light: #eef2f4;
+  --silver-header: #cdd3d7; /* Header/mobiles Menü: helles Silber */
 
   /* --cream war früher der helle Seitenhintergrund und zugleich die
      helle Textfarbe auf dunklen Flächen — im Dark Theme wird fast
@@ -147,12 +149,15 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
 .btn-full { width: 100%; }
 
 /* ---------- Header ---------- */
+/* Header und mobiles Menü sind silber (heller Grund) — deshalb hier
+   überall dunkler statt heller Text, unabhängig vom restlichen
+   (dunklen) Seiten-Theme. */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--green-900);
-  border-bottom: 1px solid rgba(199,206,211,0.25);
+  background: var(--silver-header);
+  border-bottom: 1px solid rgba(10,21,18,0.15);
 }
 .header-inner {
   display: flex;
@@ -172,9 +177,9 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   font-family: var(--font-display);
   font-size: 1.5rem;
   letter-spacing: 0.06em;
-  color: var(--cream);
+  color: var(--green-900);
 }
-.brand-word em { color: var(--gold); font-style: normal; }
+.brand-word em { color: var(--curtain-green); font-style: normal; }
 
 .main-nav {
   display: flex;
@@ -185,13 +190,13 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   font-size: 0.82rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--cream);
-  opacity: 0.85;
+  color: var(--green-900);
+  opacity: 0.72;
   position: relative;
   padding: 6px 0;
 }
-.main-nav a:hover { opacity: 1; color: var(--gold-light); }
-.main-nav a.active { opacity: 1; color: var(--gold); }
+.main-nav a:hover { opacity: 1; color: var(--curtain-green); }
+.main-nav a.active { opacity: 1; color: var(--curtain-green); }
 
 .header-actions {
   display: flex;
@@ -203,20 +208,20 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--cream);
+  color: var(--green-900);
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: none;
-  border: 1px solid rgba(237,241,238,0.35);
+  border: 1px solid rgba(10,21,18,0.35);
   padding: 9px 16px;
   border-radius: var(--radius);
   cursor: pointer;
 }
-.cart-btn:hover { border-color: var(--gold); color: var(--gold-light); }
+.cart-btn:hover { border-color: var(--green-900); color: var(--curtain-green); }
 .cart-count {
-  background: var(--gold);
-  color: var(--green-900);
+  background: var(--green-900);
+  color: var(--silver-header);
   font-weight: 600;
   min-width: 18px;
   height: 18px;
@@ -231,7 +236,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   display: none;
   background: none;
   border: none;
-  color: var(--cream);
+  color: var(--green-900);
   font-size: 1.6rem;
   cursor: pointer;
 }
@@ -240,7 +245,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   .main-nav {
     position: fixed;
     inset: 66px 0 0 0;
-    background: var(--green-900);
+    background: var(--silver-header);
     flex-direction: column;
     align-items: flex-start;
     padding: 26px 28px;
@@ -256,8 +261,10 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
 
 /* ---------- Hero ---------- */
 .hero {
+  /* Hero liegt auf dem hellen/mittleren Grün-Anfang des Seiten-
+     Verlaufs — deshalb dunkler statt heller Text (wie beim Vorhang-Logo). */
   position: relative;
-  color: var(--cream);
+  color: var(--green-900);
   background: transparent;
   overflow: hidden;
 }
@@ -277,15 +284,21 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   aspect-ratio: 4/5;
   object-fit: cover;
 }
-.hero .eyebrow { color: var(--gold-light); }
-.hero h1 { color: var(--cream); }
+.hero .eyebrow { color: var(--graphite); }
+.hero h1 { color: var(--green-900); }
 .hero-lede {
   font-size: 1.08rem;
-  color: rgba(237,241,238,0.85);
+  color: rgba(10,21,18,0.8);
   max-width: 480px;
   margin-bottom: 34px;
 }
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero .btn-outline {
+  background: transparent;
+  color: var(--green-900);
+  border-color: rgba(10,21,18,0.45);
+}
+.hero .btn-outline:hover { border-color: var(--green-900); background: rgba(10,21,18,0.08); }
 
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -906,16 +919,18 @@ html.curtain-lock body { overflow: hidden; height: 100%; }
   .curtain, .curtain * { animation: none !important; }
 }
 
-/* ---------- Page hero (inner pages) ---------- */
+/* ---------- Page hero (inner pages) ----------
+   Liegt wie der Homepage-Hero im hellen Anfangsbereich des Seiten-
+   Verlaufs — deshalb ebenfalls dunkler statt heller Text. */
 .page-hero {
   background: transparent;
-  color: var(--cream);
+  color: var(--green-900);
   padding: 70px 0 50px;
 }
-.page-hero .eyebrow { color: var(--gold-light); }
-.page-hero h1 { color: var(--cream); margin-bottom: 10px; }
-.breadcrumb { font-size: 0.78rem; color: rgba(237,241,238,0.6); }
-.breadcrumb a:hover { color: var(--gold-light); }
+.page-hero .eyebrow { color: var(--graphite); }
+.page-hero h1 { color: var(--green-900); margin-bottom: 10px; }
+.breadcrumb { font-size: 0.78rem; color: rgba(10,21,18,0.65); }
+.breadcrumb a:hover { color: var(--curtain-green); }
 
 /* ---------- Legal pages ---------- */
 .legal-content h2 { margin-top: 2em; font-size: 1.4rem; }
