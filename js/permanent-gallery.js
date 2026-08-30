@@ -9,7 +9,6 @@ const PERMANENT_GALLERY = {
       "assets/img/permanent/unikate-1.png",
       "assets/img/permanent/unikate-2.png",
       "assets/img/permanent/unikate-3.png",
-      "assets/img/permanent/unikate-4.png",
     ],
   },
   fusskettchen: {
