@@ -478,6 +478,22 @@ section { padding: 96px 0; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
 }
 
+/* ---------- Kategorien (Permanent Schmuck) ---------- */
+.category-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 6px;
+}
+.category-chips span {
+  padding: 8px 18px;
+  border: 1px solid rgba(226,195,119,0.45);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  color: var(--gold-light);
+}
+
 /* ---------- Info banner (permanent jewelry facts) ---------- */
 .facts-row {
   display: grid;
